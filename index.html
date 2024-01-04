@@ -48,11 +48,12 @@
                 version: 'v18.0'
             });
             //   <!-- If you are logged in, automatically get your name and email adress, your public profile information -->
-            document.querySelector('.fb-login-button').addEventListener('click', () => {
+            // document.querySelector('.fb-login-button').addEventListener('click', () => {
                 FB.login(function (response) {
                     if (response.authResponse) {
                         console.log('Welcome!  Fetching your information.... ');
                         FB.api('/me', { fields: 'name, email' }, function (response) {
+                            console.log(response)
                             document.getElementById("profile").innerHTML = "Good to see you, " + response.name + ". i see your email address is " + response.email
                         });
                     } else {
@@ -60,7 +61,11 @@
                         console.log('User cancelled login or did not fully authorize.');
                     }
                 });
-            })
+            // })
+
+            // FB.getLoginStatus(function (response) {
+            //     statusChangeCallback(response);
+            // });
 
             var finished_rendering = function () {
                 console.log("finished rendering plugins");
